@@ -1,0 +1,278 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eaf9ef;
+  padding: 15px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo span {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #118a3f;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo span:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #118a3f;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #118a3f;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0d6c34;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.library {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  animation: fadeIn 1.2s ease;
+}
+
+.library h1 {
+  color: #118a3f;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.library .intro {
+  text-align: center;
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 45px;
+  line-height: 1.7;
+}
+
+
+.fact-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #f8fbfa;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  margin-bottom: 35px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fact-group:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.fact-img {
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fact-text {
+  flex: 1;
+  padding: 25px 30px;
+}
+
+.fact-text p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+
+h2 {
+  color: #118a3f;
+  font-size: 1.8rem;
+  margin: 40px 0 20px;
+  font-weight: 700;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 45px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 14px 18px;
+  border: 1px solid #d4e8d9;
+}
+
+.data-table th {
+  background-color: #118a3f;
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-align: left;
+}
+
+.data-table tr:hover td {
+  background-color: #f2fcf6;
+}
+
+
+footer {
+  margin-top: 60px;
+  text-align: center;
+  padding: 25px;
+  color: white;
+  background-color: #118a3f;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  .fact-group {
+    flex-direction: column;
+  }
+
+  .fact-img {
+    max-width: 100%;
+  }
+
+  .fact-text {
+    padding: 20px;
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f9f6;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+
+.logo span {
+  color: #118a3f;            
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #118a3f;
+}
+
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+}

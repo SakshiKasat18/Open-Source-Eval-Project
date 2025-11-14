@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name='api-url' content='http://localhost:3001/api/calculate'>
+  <title>Carbon Emission Estimator | Breathe Green</title>
+  <link rel="stylesheet" href="carbon_calculator.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"> <span>Breathe Green</span></div>
+    <ul class="nav-links">
+      <li><a href="nav_bar.html">Home</a></li>
+      <li><a href="eco_liberary.html">Eco Library</a></li>
+        <li><a href="carbon_calculator.ht ml">Carbon Emission Calculator</a></li>
+
+    </ul>
+  </nav>
+
+
+  <section class="form-section">
+    <h1>Carbon Emission Estimator</h1>
+    <p style="text-align:center;">Select who you want to calculate for:</p>
+
+
+    <div class="choice-buttons">
+      <button id="individualBtn"> Individual</button>
+      <button id="familyBtn"> Family</button>
+    </div>
+
+
+    <form id="individualForm" class="vertical-form" style="display:none;">
+      <h2>Individual Data</h2>
+
+      <label>Travel Mode:</label>
+      <select id="travelMode">
+        <option value="car">Car</option>
+        <option value="ev">EV</option>
+        <option value="bus">Bus</option>
+        <option value="train">Train</option>
+        <option value="scooter">Scooter</option>
+        <option value="walk">Walk</option>
+        <option value="cycle">Cycle</option>
+      </select>
+
+      <label>Distance Travelled (km/month):</label>
+      <input type="number" id="travelKm" required>
+
+      <label>Diet Type:</label>
+      <select id="diet">
+        <option value="veg">Vegetarian</option>
+        <option value="mixed">Mixed</option>
+        <option value="meat">Non-Vegetarian</option>
+      </select>
+
+      <label>Electricity Usage (kWh/month):</label>
+      <input type="number" id="kWh" required>
+
+      <label>Waste Produced (kg/month):</label>
+      <input type="number" id="waste" required>
+
+      <button type="button" id="calcIndividual">Send Data</button>
+    </form>
+
+
+    <form id="familyForm" class="vertical-form" style="display:none;">
+      <h2>Family Data</h2>
+
+      <label>Total Family Members:</label>
+      <input type="number" id="familyMembers" required>
+
+      <label>Number of Vehicles:</label>
+      <input type="number" id="vehicles" required>
+
+      <label>Vehicle Type:</label>
+      <select id="vehicleType">
+        <option value="petrol">Petrol</option>
+        <option value="ev">EV</option>
+        <option value="diesel">diesel</option>
+      </select>
+
+      <label>Average Travel per Month (km per vehicle):</label>
+      <input type="number" id="familyTravelKm" required>
+
+      <label>Electricity Usage (kWh/month):</label>
+      <input type="number" id="familyKwh" required>
+
+      <label>Waste Produced (kg/month):</label>
+      <input type="number" id="familyWaste" required>
+
+      <label>Average Diet Type:</label>
+      <select id="familyDiet">
+        <option value="veg">Vegetarian</option>
+        <option value="mixed">Mixed</option>
+        <option value="meat">Non-Vegetarian</option>
+      </select>
+
+      <button type="button" id="calcFamily">Send Data</button>
+    </form>
+
+    <div id="result" style="margin-top:30px; text-align:center;"></div>
+  </section>
+
+  <script>
+
+    const individualBtn = document.getElementById("individualBtn");
+    const familyBtn = document.getElementById("familyBtn");
+    const individualForm = document.getElementById("individualForm");
+    const familyForm = document.getElementById("familyForm");
+    const resultDiv = document.getElementById("result");
+
+    individualBtn.addEventListener("click", () => {
+      individualForm.style.display = "flex";
+      familyForm.style.display = "none";
+      resultDiv.innerHTML = "";
+    });
+
+    familyBtn.addEventListener("click", () => {
+      familyForm.style.display = "flex";
+      individualForm.style.display = "none";
+      resultDiv.innerHTML = "";
+    });
+
+
+    const API_URL = "http://localhost:3001/api/calculate";
+
+
+    document.getElementById("calcIndividual").addEventListener("click", async () => {
+      const payload = {
+        type: "individual",
+        travelMode: document.getElementById("travelMode").value,
+        travelKm: document.getElementById("travelKm").value,
+        diet: document.getElementById("diet").value,
+        kWh: document.getElementById("kWh").value,
+        waste: document.getElementById("waste").value,
+      };
+
+      resultDiv.innerHTML = " Sending data to server...";
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        resultDiv.innerHTML = `<h3>Server Response:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<p style="color:red;"> Failed to reach backend API.</p>`;
+      }
+    });
+
+  
+    document.getElementById("calcFamily").addEventListener("click", async () => {
+      const payload = {
+        type: "family",
+        members: document.getElementById("familyMembers").value,
+        vehicles: document.getElementById("vehicles").value,
+        vehicleType: document.getElementById("vehicleType").value,
+        familyTravelKm: document.getElementById("familyTravelKm").value,
+        kWh: document.getElementById("familyKwh").value,
+        waste: document.getElementById("familyWaste").value,
+        diet: document.getElementById("familyDiet").value,
+      };
+
+      resultDiv.innerHTML = "⏳ Sending data to server...";
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        resultDiv.innerHTML = `<h3>Server Response:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<p style="color:red;"> Failed to reach backend API.</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

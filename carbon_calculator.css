@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eaf9ef;
+  padding: 15px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo span {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #118a3f;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo span:hover {
+  transform: scale(1.05);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #118a3f;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 4px;
+  transition: 0.3s;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #118a3f;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0d6c34;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+.form-section {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 1.2s ease;
+}
+
+.form-section h1 {
+  text-align: center;
+  color: #118a3f;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.form-section p {
+  text-align: center;
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 28px;
+}
+
+
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.choice-buttons button {
+  background-color: #118a3f;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.choice-buttons button:hover {
+  background-color: #0d6c34;
+  transform: scale(1.05);
+}
+
+
+.vertical-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fbfa;
+  padding: 25px 30px;
+  border-radius: 14px;
+  width: 85%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+  animation: fadeIn 0.8s ease;
+}
+
+.vertical-form h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #118a3f;
+  margin-bottom: 15px;
+}
+
+.vertical-form label {
+  font-weight: 600;
+  margin-top: 12px;
+  color: #333;
+}
+
+.vertical-form input,
+.vertical-form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #d4e8d9;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.vertical-form input:focus,
+.vertical-form select:focus {
+  border-color: #118a3f;
+  outline: none;
+  box-shadow: 0 0 6px rgba(17,138,63,0.25);
+}
+
+
+.vertical-form button {
+  background-color: #118a3f;
+  color: white;
+  border: none;
+  margin-top: 22px;
+  padding: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.vertical-form button:hover {
+  background-color: #0d6c34;
+  transform: scale(1.04);
+}
+
+
+#result {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: #eaf9ef;
+  border-left: 4px solid #118a3f;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #0d6c34;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+
+@media (max-width: 768px) {
+  .choice-buttons {
+    flex-direction: column;
+  }
+  
+  .choice-buttons button {
+    width: 100%;
+  }
+
+  .vertical-form {
+    max-width: 100%;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
