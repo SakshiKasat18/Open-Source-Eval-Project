@@ -65,7 +65,14 @@ function computeFallback(data) {
       food: +food.toFixed(2),
       waste: +waste.toFixed(2)
     },
-    used: "fallback"
+    used: "fallback",
+    originalData: {
+      travelKm: parseFloat(travelKm),
+      travelMode,
+      kWh: parseFloat(kWh),
+      foodCategory,
+      wasteKgPerMonth: parseFloat(wasteKgPerMonth)
+    }
   };
 }
 
@@ -146,5 +153,17 @@ module.exports = async (req, res) => {
   }
 
   const total = +(Object.values(breakdown).reduce((a, b) => a + (Number(b) || 0), 0)).toFixed(2);
-  return res.status(200).json({ total, breakdown, used });
+  
+  return res.status(200).json({ 
+    total, 
+    breakdown, 
+    used,
+    originalData: {
+      travelKm: parseFloat(travelKm),
+      travelMode,
+      kWh: parseFloat(kWh),
+      foodCategory,
+      wasteKgPerMonth: parseFloat(wasteKgPerMonth)
+    }
+  });
 };
