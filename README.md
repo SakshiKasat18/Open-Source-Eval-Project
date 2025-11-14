@@ -1,4 +1,4 @@
-# CarbonSense
+# Breathe Green
 
 A polished, corporate-grade Carbon Footprint Calculator with unique features, strong UI, clean architecture, and a functioning backend API.
 
