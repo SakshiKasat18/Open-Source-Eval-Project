@@ -1,28 +1,46 @@
-/* 🌿 Reset */
+/* 🌿 RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
-/* 🌿 Navbar */
+body {
+  background-color: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* -----------------------------------
+   🌿 NAVBAR
+----------------------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #eaf9ef;
   padding: 15px 40px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo span {
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 800;
+  font-size: 1.6rem;
   color: #118a3f;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo span:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -35,70 +53,91 @@
   text-decoration: none;
   color: #118a3f;
   font-weight: 600;
-  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #118a3f;
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #0c642c;
+  color: #0d6c34;
 }
 
-/* 🌍 Hero Section */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* -----------------------------------
+   🌍 HERO SECTION
+----------------------------------- */
 .hero {
-  background: linear-gradient(to right, #c9f2d7, #eaf9ef);
+  background: linear-gradient(to right, #bff3d1, #eaf9ef);
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
+  animation: fadeIn 1.2s ease;
 }
 
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #118a3f;
   margin-bottom: 15px;
+  animation: slideDown 1s ease;
 }
 
 .hero p {
   font-size: 1.2rem;
   color: #333;
+  animation: fadeIn 1.5s ease;
 }
 
-/* 🌿 Stats Section */
+/* -----------------------------------
+   📊 STATS SECTION
+----------------------------------- */
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* exactly 3 per row */
-  gap: 20px;
-  justify-items: center;
-  align-items: stretch;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 60px auto;
   padding: 20px;
 }
 
 .stat-card {
-  background-color: #eaf9ef;
-  border-radius: 12px;
-  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 30px 25px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  transform: translateY(0);
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .stat-card h2 {
   color: #118a3f;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 12px;
 }
 
 .stat-card p {
-  color: #333;
+  color: #444;
   font-size: 1rem;
 }
 
-/* Responsive adjustments for stats */
 @media (max-width: 768px) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
@@ -111,39 +150,45 @@
   }
 }
 
-/* 🌱 Facts Section */
+/* -----------------------------------
+   💡 FACTS SECTION
+----------------------------------- */
 .facts {
   background-color: #f8fbfa;
-  padding: 50px 20px;
+  padding: 70px 20px;
   text-align: center;
+  animation: fadeIn 1.5s ease;
 }
 
 .facts h2 {
   color: #118a3f;
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+  font-weight: 700;
 }
 
 .fact-card {
   background-color: #ffffff;
   border-radius: 10px;
-  margin: 10px auto;
-  padding: 15px;
+  margin: 15px auto;
+  padding: 20px;
   max-width: 600px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   font-size: 1rem;
   color: #333;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .fact-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* 🌾 Impact Examples Table */
+/* -----------------------------------
+   📈 IMPACT EXAMPLES TABLE
+----------------------------------- */
 .impact-examples {
-  padding: 60px 20px;
+  padding: 70px 20px;
   background-color: #eaf9ef;
   text-align: center;
 }
@@ -151,21 +196,24 @@
 .impact-examples h2 {
   color: #118a3f;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .impact-examples table {
   width: 80%;
   margin: 0 auto;
   border-collapse: collapse;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .impact-examples th,
 .impact-examples td {
   border: 1px solid #d4e8d9;
-  padding: 12px;
+  padding: 14px;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .impact-examples th {
@@ -174,22 +222,24 @@
   font-weight: 600;
 }
 
-.impact-examples td {
-  background-color: #fff;
-  color: #333;
+.impact-examples tr:hover td {
+  background-color: #f2fcf6;
 }
 
-/* 🌿 Government Guidelines Section */
+/* -----------------------------------
+   🏛 GOVERNMENT GUIDELINES SECTION
+----------------------------------- */
 .header {
-  background: linear-gradient(to right, #c9f2d7, #eaf9ef);
+  background: linear-gradient(to right, #bff3d1, #eaf9ef);
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
+  animation: fadeIn 1.2s ease;
 }
 
 .header h1 {
   color: #118a3f;
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
 }
 
 .header p {
@@ -198,7 +248,7 @@
 }
 
 .guidelines {
-  padding: 50px 20px;
+  padding: 60px 20px;
   background-color: #f8fbfa;
   max-width: 1000px;
   margin: auto;
@@ -206,23 +256,27 @@
 
 .guidelines h2 {
   color: #118a3f;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: 700;
 }
 
 .card {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
@@ -234,14 +288,35 @@
   color: #333;
 }
 
-/* 🌳 Footer */
+/* -----------------------------------
+   🌳 FOOTER
+----------------------------------- */
 .footer {
   background-color: #118a3f;
   color: white;
   text-align: center;
-  padding: 20px;
-  font-size: 0.95rem;
-  margin-top: 40px;
+  padding: 25px;
+  font-size: 1rem;
+  margin-top: 50px;
+  letter-spacing: 0.3px;
+}
+
+/* -----------------------------------
+   ✨ ANIMATIONS
+----------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 
