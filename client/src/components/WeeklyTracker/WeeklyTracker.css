@@ -1,0 +1,42 @@
+.weekly-tracker-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #282c34;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.weekly-tracker-container h2 {
+  text-align: center;
+  color: #00e676;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.chart-wrapper {
+  background-color: #3a3f4a;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.test-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  background-color: #f0c419;
+  border: none;
+  border-radius: 8px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+  background-color: #ffd633;
+}
