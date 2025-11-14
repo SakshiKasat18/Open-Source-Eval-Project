@@ -1,0 +1,197 @@
+/* ---------- ECO LIBRARY PAGE ---------- */
+.library {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.library h1 {
+  color: #118a3f;
+  text-align: center;
+  font-size: 2.1rem;
+  margin-bottom: 8px;
+}
+
+.library .intro {
+  text-align: center;
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* FACT GROUPS */
+.fact-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #f8fcf9;
+  border-left: 5px solid #118a3f;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.fact-group:hover {
+  transform: translateY(-3px);
+}
+
+.fact-img {
+  width: 100%;
+  max-width: 330px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+  margin: 0;
+}
+
+.fact-text {
+  flex: 1;
+  padding: 22px 25px;
+}
+
+.fact-text p {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+
+/* TABLES */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0 50px;
+  font-size: 15px;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #eaf5ec;
+  color: #118a3f;
+  font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  color: #444;
+  background-color: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .fact-group {
+    flex-direction: column;
+  }
+
+  .fact-img {
+    max-width: 100%;
+    height: 220px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .fact-text {
+    padding: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- NAVBAR STYLE ---------- */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f9f6;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo on the left */
+.logo span {
+  color: #118a3f;            /* 🌿 Bright green color */
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+}
+
+/* Right-side nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #118a3f;
+}
+
+/* Optional: Make it mobile-friendly */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,187 @@
+/* ---------- GLOBAL STYLES ---------- */
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background-color: #f5faf6;
+  color: #333;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #118a3f;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #118a3f;
+}
+
+/* ---------- MAIN SECTION ---------- */
+.form-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h1 {
+  text-align: center;
+  color: #118a3f;
+  font-size: 1.9rem;
+}
+
+.form-section p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* ---------- BUTTON CHOICES ---------- */
+.choice-buttons {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.choice-buttons button {
+  background-color: #118a3f;
+  color: white;
+  border: none;
+  padding: 16px 45px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.choice-buttons button:hover {
+  background-color: #0d6c34;
+  transform: scale(1.05);
+}
+
+/* ---------- VERTICAL FORMS ---------- */
+.vertical-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8fbfc;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 480px; /* 👈 medium width for inputs and form */
+  margin: 0 auto;
+}
+
+.vertical-form h2 {
+  text-align: center;
+  color: #118a3f;
+  margin-bottom: 15px;
+}
+
+.vertical-form label {
+  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
+  align-self: flex-start;
+  font-size: 0.95rem;
+}
+
+/* ---------- INPUTS & SELECT ---------- */
+.vertical-form input,
+.vertical-form select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #ffffff;
+  margin-top: 4px;
+  transition: 0.2s ease;
+}
+
+.vertical-form input:focus,
+.vertical-form select:focus {
+  border-color: #118a3f;
+  outline: none;
+  box-shadow: 0 0 6px rgba(17, 138, 63, 0.25);
+}
+
+/* ---------- SUBMIT BUTTON ---------- */
+.vertical-form button {
+  background-color: #118a3f;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 60%; /* 👈 medium width for button */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.vertical-form button:hover {
+  background-color: #0d6c34;
+  transform: scale(1.03);
+}
+
+/* ---------- RESULT BOX ---------- */
+#result {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 15px;
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #1b5e20;
+  display: none; /* Hide until data arrives */
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .form-section {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .vertical-form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .vertical-form button {
+    width: 100%;
+  }
+}
