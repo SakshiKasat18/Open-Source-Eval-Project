@@ -1,4 +1,4 @@
-/* 🌿 RESET */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-/* -----------------------------------
-   🌿 NAVBAR
------------------------------------ */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -77,9 +75,7 @@ body {
   width: 100%;
 }
 
-/* -----------------------------------
-   🌍 HERO SECTION
------------------------------------ */
+
 .hero {
   background: linear-gradient(to right, #bff3d1, #eaf9ef);
   text-align: center;
@@ -100,9 +96,7 @@ body {
   animation: fadeIn 1.5s ease;
 }
 
-/* -----------------------------------
-   📊 STATS SECTION
------------------------------------ */
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -150,9 +144,7 @@ body {
   }
 }
 
-/* -----------------------------------
-   💡 FACTS SECTION
------------------------------------ */
+
 .facts {
   background-color: #f8fbfa;
   padding: 70px 20px;
@@ -184,9 +176,7 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* -----------------------------------
-   📈 IMPACT EXAMPLES TABLE
------------------------------------ */
+
 .impact-examples {
   padding: 70px 20px;
   background-color: #eaf9ef;
@@ -226,9 +216,7 @@ body {
   background-color: #f2fcf6;
 }
 
-/* -----------------------------------
-   🏛 GOVERNMENT GUIDELINES SECTION
------------------------------------ */
+
 .header {
   background: linear-gradient(to right, #bff3d1, #eaf9ef);
   text-align: center;
@@ -262,35 +250,72 @@ body {
   font-weight: 700;
 }
 
-.card {
-  background-color: #ffffff;
+
+.faq {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
   border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.faq-question {
+  width: 100%;
+  background-color: #118a3f;
+  color: white;
+  text-align: left;
+  padding: 18px 20px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.card h3 {
-  color: #118a3f;
-  margin-bottom: 10px;
+.faq-question:hover {
+  background-color: #0d6c34;
+  transform: scale(1.01);
 }
 
-.card p {
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active::after {
+  content: "-";
+}
+
+.faq-answer {
+  background-color: #ffffff;
   color: #333;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
 }
 
-/* -----------------------------------
-   🌳 FOOTER
------------------------------------ */
+.faq-answer p {
+  padding: 15px 0;
+  line-height: 1.6;
+}
+
+.faq-question.active + .faq-answer {
+  max-height: 200px;
+  opacity: 1;
+  padding-bottom: 15px;
+}
+
 .footer {
   background-color: #118a3f;
   color: white;
@@ -301,9 +326,6 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* -----------------------------------
-   ✨ ANIMATIONS
------------------------------------ */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -313,12 +335,4 @@ body {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
-
 
