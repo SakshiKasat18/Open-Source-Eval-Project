@@ -103,81 +103,66 @@
   </section>
 
   <script>
+const API_URL = "/api/calculate"; // relative path for same-repo Vercel deployment
 
-    const individualBtn = document.getElementById("individualBtn");
-    const familyBtn = document.getElementById("familyBtn");
-    const individualForm = document.getElementById("individualForm");
-    const familyForm = document.getElementById("familyForm");
-    const resultDiv = document.getElementById("result");
-
-    individualBtn.addEventListener("click", () => {
-      individualForm.style.display = "flex";
-      familyForm.style.display = "none";
-      resultDiv.innerHTML = "";
+async function postPayload(payload) {
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Server ${res.status}: ${text}`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.error("API error:", err);
+    throw err;
+  }
+}
 
-    familyBtn.addEventListener("click", () => {
-      familyForm.style.display = "flex";
-      individualForm.style.display = "none";
-      resultDiv.innerHTML = "";
-    });
+// Individual
+document.getElementById("calcIndividual").addEventListener("click", async () => {
+  const payload = {
+    type: "individual",
+    travelMode: document.getElementById("travelMode").value,
+    travelKm: Number(document.getElementById("travelKm").value || 0),
+    // backend accepts `diet` -> mapped to foodCategory
+    diet: document.getElementById("diet").value,
+    kWh: Number(document.getElementById("kWh").value || 0),
+    waste: Number(document.getElementById("waste").value || 0)
+  };
+  try {
+    const data = await postPayload(payload);
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  } catch (e) {
+    document.getElementById("result").innerHTML = `<p style="color:red">Error: ${e.message}</p>`;
+  }
+});
 
-
-    const API_URL = "/api/calculate";
-
-
-    document.getElementById("calcIndividual").addEventListener("click", async () => {
-      const payload = {
-        type: "individual",
-        travelMode: document.getElementById("travelMode").value,
-        travelKm: document.getElementById("travelKm").value,
-        diet: document.getElementById("diet").value,
-        kWh: document.getElementById("kWh").value,
-        waste: document.getElementById("waste").value,
-      };
-
-      resultDiv.innerHTML = " Sending data to server...";
-
-      try {
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        resultDiv.innerHTML = `<h3>Server Response:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
-      } catch (err) {
-        resultDiv.innerHTML = `<p style="color:red;"> Failed to reach backend API.</p>`;
-      }
-    });
-
-  
-    document.getElementById("calcFamily").addEventListener("click", async () => {
-      const payload = {
-        type: "family",
-        members: document.getElementById("familyMembers").value,
-        vehicles: document.getElementById("vehicles").value,
-        vehicleType: document.getElementById("vehicleType").value,
-        familyTravelKm: document.getElementById("familyTravelKm").value,
-        kWh: document.getElementById("familyKwh").value,
-        waste: document.getElementById("familyWaste").value,
-        diet: document.getElementById("familyDiet").value,
-      };
-
-      resultDiv.innerHTML = "⏳ Sending data to server...";
-
-      try {
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        resultDiv.innerHTML = `<h3>Server Response:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
-      } catch (err) {
-        resultDiv.innerHTML = `<p style="color:red;"> Failed to reach backend API.</p>`;
-      }
-    });
+// Family
+document.getElementById("calcFamily").addEventListener("click", async () => {
+  const payload = {
+    type: "family",
+    members: Number(document.getElementById("familyMembers").value || 0),
+    vehicles: Number(document.getElementById("vehicles").value || 0),
+    vehicleType: document.getElementById("vehicleType").value,
+    familyTravelKm: Number(document.getElementById("familyTravelKm").value || 0),
+    familyKwh: Number(document.getElementById("familyKwh").value || 0),
+    familyWaste: Number(document.getElementById("familyWaste").value || 0),
+    familyDiet: document.getElementById("familyDiet").value
+  };
+  try {
+    const data = await postPayload(payload);
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+  } catch (e) {
+    document.getElementById("result").innerHTML = `<p style="color:red">Error: ${e.message}</p>`;
+  }
+});
   </script>
 </body>
 </html>
