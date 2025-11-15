@@ -118,7 +118,7 @@ export async function calculateCarbonFootprint(req, res) {
     let used = "climatiq";
     const breakdown = { travel: 0, electricity: 0, food: 0, waste: 0 };
 
-    // Calculate travel emissions
+    // travel emissions
     try {
       const efId = CLIMATIQ_IDS.travel[travelMode];
       if (efId && travelKm > 0) {
@@ -137,7 +137,7 @@ export async function calculateCarbonFootprint(req, res) {
       used = "mixed";
     }
 
-    // Calculate electricity emissions
+    // electricity emissions
     try {
       const efId = CLIMATIQ_IDS.electricity.default;
       if (efId && kWh > 0) {
@@ -156,7 +156,7 @@ export async function calculateCarbonFootprint(req, res) {
       used = "mixed";
     }
 
-    // Calculate food emissions
+    // food emissions
     try {
       const efId = CLIMATIQ_IDS.food[foodCategory];
       if (efId) {
